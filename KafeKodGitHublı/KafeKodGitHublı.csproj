@@ -52,12 +52,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </Compile>
     <Compile Include="GecmisSiparisler.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,9 +74,6 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GecmisSiparisler.resx">
       <DependentUpon>GecmisSiparisler.cs</DependentUpon>
@@ -121,6 +112,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Masa.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\masadolu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\masabos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KafeKod.Data\KafeKod.Data.csproj">
+      <Project>{4e55c39d-3dcc-4b4f-98c2-7b9ee232c7b4}</Project>
+      <Name>KafeKod.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

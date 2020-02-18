@@ -80,6 +80,11 @@
             this.nudAdet.Name = "nudAdet";
             this.nudAdet.Size = new System.Drawing.Size(120, 29);
             this.nudAdet.TabIndex = 3;
+            this.nudAdet.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // btnEkle
             // 
@@ -89,15 +94,22 @@
             this.btnEkle.TabIndex = 4;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // dgvSiparisDetaylari
             // 
+            this.dgvSiparisDetaylari.AllowUserToAddRows = false;
+            this.dgvSiparisDetaylari.AllowUserToDeleteRows = false;
             this.dgvSiparisDetaylari.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvSiparisDetaylari.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSiparisDetaylari.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvSiparisDetaylari.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSiparisDetaylari.Location = new System.Drawing.Point(34, 99);
             this.dgvSiparisDetaylari.Name = "dgvSiparisDetaylari";
+            this.dgvSiparisDetaylari.ReadOnly = true;
+            this.dgvSiparisDetaylari.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSiparisDetaylari.Size = new System.Drawing.Size(441, 362);
             this.dgvSiparisDetaylari.TabIndex = 5;
             // 
@@ -162,6 +174,7 @@
             this.btnSiparisIptal.TabIndex = 12;
             this.btnSiparisIptal.Text = "Sipariş İptal";
             this.btnSiparisIptal.UseVisualStyleBackColor = false;
+            this.btnSiparisIptal.Click += new System.EventHandler(this.btnSiparisIptal_Click);
             // 
             // btnOdemeAl
             // 
@@ -174,6 +187,7 @@
             this.btnOdemeAl.TabIndex = 13;
             this.btnOdemeAl.Text = "Ödeme Al";
             this.btnOdemeAl.UseVisualStyleBackColor = false;
+            this.btnOdemeAl.Click += new System.EventHandler(this.btnOdemeAl_Click);
             // 
             // btnAnasayfa
             // 
@@ -186,6 +200,7 @@
             this.btnAnasayfa.TabIndex = 14;
             this.btnAnasayfa.Text = "Anasayfaya Dön";
             this.btnAnasayfa.UseVisualStyleBackColor = false;
+            this.btnAnasayfa.Click += new System.EventHandler(this.btnAnasayfa_Click);
             // 
             // lblMasaNo
             // 
