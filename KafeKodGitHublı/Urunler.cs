@@ -7,14 +7,58 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KafeKod.Data;
 
 namespace KafeKodGitHublı
 {
     public partial class Urunler : Form
     {
-        public Urunler()
+        KafeVeri db;
+        BindingList<Urun> blUrunler;
+        public Urunler(KafeVeri kafeVeri)
         {
+            db = kafeVeri;
             InitializeComponent();
+            dgvUrunler.AutoGenerateColumns = false;
+            blUrunler = new BindingList<Urun>(db.Urunler);
+            dgvUrunler.DataSource = blUrunler;
+        }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            string urunAd = txtUrunAd.Text.Trim();
+            if (urunAd == "")
+            {
+                MessageBox.Show("Lütfen bir ürün adı giriniz.");
+                return;
+            }
+            blUrunler.Add(new Urun
+            {
+                UrunAd = urunAd,
+                BirimFiyat = nudBirimFiyat.Value
+            });
+            db.Urunler.Sort();
+        }
+
+        private void dgvUrunler_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show("Geçersiz bir değer girdiniz.");
+        }
+
+        private void dgvUrunler_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                if (e.FormattedValue.ToString().Trim() == "")
+                {
+                    dgvUrunler.Rows[e.RowIndex].ErrorText = "Ürün ad boş geçilemez.";
+                    e.Cancel = true;
+                }
+                else
+                {
+                    dgvUrunler.Rows[e.RowIndex].ErrorText = "";
+                }
+            }
         }
     }
 }

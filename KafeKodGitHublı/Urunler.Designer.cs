@@ -34,6 +34,8 @@
             this.nudBirimFiyat = new System.Windows.Forms.NumericUpDown();
             this.btnEkle = new System.Windows.Forms.Button();
             this.dgvUrunler = new System.Windows.Forms.DataGridView();
+            this.clmUrunAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmlBirimFiyat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nudBirimFiyat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUrunler)).BeginInit();
             this.SuspendLayout();
@@ -78,14 +80,36 @@
             this.btnEkle.TabIndex = 4;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // dgvUrunler
             // 
+            this.dgvUrunler.AllowUserToAddRows = false;
+            this.dgvUrunler.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvUrunler.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvUrunler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUrunler.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmUrunAd,
+            this.cmlBirimFiyat});
             this.dgvUrunler.Location = new System.Drawing.Point(48, 93);
             this.dgvUrunler.Name = "dgvUrunler";
             this.dgvUrunler.Size = new System.Drawing.Size(698, 375);
             this.dgvUrunler.TabIndex = 5;
+            this.dgvUrunler.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvUrunler_CellValidating);
+            this.dgvUrunler.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvUrunler_DataError);
+            // 
+            // clmUrunAd
+            // 
+            this.clmUrunAd.DataPropertyName = "BirimFiyat";
+            this.clmUrunAd.HeaderText = "Ürün Adı";
+            this.clmUrunAd.Name = "clmUrunAd";
+            this.clmUrunAd.Width = 109;
+            // 
+            // cmlBirimFiyat
+            // 
+            this.cmlBirimFiyat.HeaderText = "Birim Fiyat";
+            this.cmlBirimFiyat.Name = "cmlBirimFiyat";
+            this.cmlBirimFiyat.Width = 121;
             // 
             // Urunler
             // 
@@ -99,7 +123,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Urunler";
             this.Text = "Urunler";
             ((System.ComponentModel.ISupportInitialize)(this.nudBirimFiyat)).EndInit();
@@ -117,5 +141,7 @@
         private System.Windows.Forms.NumericUpDown nudBirimFiyat;
         private System.Windows.Forms.Button btnEkle;
         private System.Windows.Forms.DataGridView dgvUrunler;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmUrunAd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmlBirimFiyat;
     }
 }
