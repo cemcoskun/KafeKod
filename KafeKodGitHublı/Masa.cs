@@ -14,10 +14,10 @@ namespace KafeKodGitHublı
     public partial class Masa : Form
     {
         public event EventHandler<MasaTasimaEventArgs> MasaTasindi;
-        KafeVeri db;
+        KafeContext db;
         Siparis siparis;
         BindingList<SiparisDetay> blSiparisDetaylar;
-        public Masa(KafeVeri kafeveri, Siparis siparis)
+        public Masa(KafeContext kafeveri, Siparis siparis)
         {
             db = kafeveri;
             this.siparis = siparis;

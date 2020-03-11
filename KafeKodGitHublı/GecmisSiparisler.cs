@@ -13,8 +13,8 @@ namespace KafeKodGitHublı
 {
     public partial class GecmisSiparisler : Form
     {
-        KafeVeri db;
-        public GecmisSiparisler(KafeVeri kafeVeri)
+        KafeContext db;
+        public GecmisSiparisler(KafeContext kafeVeri)
         {
             db = kafeVeri;
             InitializeComponent();
