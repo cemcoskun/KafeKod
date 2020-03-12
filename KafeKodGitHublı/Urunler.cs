@@ -14,14 +14,12 @@ namespace KafeKodGitHublı
     public partial class Urunler : Form
     {
         KafeContext db;
-        BindingList<Urun> blUrunler;
         public Urunler(KafeContext kafeVeri)
         {
             db = kafeVeri;
             InitializeComponent();
             dgvUrunler.AutoGenerateColumns = false;
-            blUrunler = new BindingList<Urun>(db.Urunler);
-            dgvUrunler.DataSource = blUrunler;
+            dgvUrunler.DataSource = new BindingSource(db.Urunler.OrderBy(x => x.UrunAd).ToList(), null);
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
@@ -32,12 +30,13 @@ namespace KafeKodGitHublı
                 MessageBox.Show("Lütfen bir ürün adı giriniz.");
                 return;
             }
-            blUrunler.Add(new Urun
+            db.Urunler.Add(new Urun
             {
                 UrunAd = urunAd,
                 BirimFiyat = nudBirimFiyat.Value
             });
-            db.Urunler.Sort();
+            db.SaveChanges();
+            dgvUrunler.DataSource = new BindingSource(db.Urunler.OrderBy(x => x.UrunAd).ToList(), null);
         }
 
         private void dgvUrunler_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -59,6 +58,25 @@ namespace KafeKodGitHublı
                     dgvUrunler.Rows[e.RowIndex].ErrorText = "";
                 }
             }
+            db.SaveChanges();
+        }
+
+        private void dgvUrunler_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            Urun urun = (Urun)e.Row.DataBoundItem;
+            if (urun.SiparisDetaylar.Count > 0)
+            {
+                MessageBox.Show("Bu ürün geçmiş siparişlerle ilişkili olduğu için silinemez.");
+                e.Cancel = true;
+                return;
+            }
+            db.Urunler.Remove(urun);
+            db.SaveChanges();
+        }
+
+        private void Urunler_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            txtUrunAd.Focus();
         }
     }
 }

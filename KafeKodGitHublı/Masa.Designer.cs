@@ -35,6 +35,11 @@
             this.nudAdet = new System.Windows.Forms.NumericUpDown();
             this.btnEkle = new System.Windows.Forms.Button();
             this.dgvSiparisDetaylari = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmsSiparisDetay = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiSiparisDetaySil = new System.Windows.Forms.ToolStripMenuItem();
             this.cboMasaNo = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnMasaTasi = new System.Windows.Forms.Button();
@@ -44,8 +49,6 @@
             this.btnOdemeAl = new System.Windows.Forms.Button();
             this.btnAnasayfa = new System.Windows.Forms.Button();
             this.lblMasaNo = new System.Windows.Forms.Label();
-            this.cmsSiparisDetay = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmiSiparisDetaySil = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.nudAdet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSiparisDetaylari)).BeginInit();
             this.cmsSiparisDetay.SuspendLayout();
@@ -111,6 +114,10 @@
             this.dgvSiparisDetaylari.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSiparisDetaylari.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvSiparisDetaylari.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSiparisDetaylari.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
             this.dgvSiparisDetaylari.ContextMenuStrip = this.cmsSiparisDetay;
             this.dgvSiparisDetaylari.Location = new System.Drawing.Point(34, 99);
             this.dgvSiparisDetaylari.Name = "dgvSiparisDetaylari";
@@ -119,6 +126,41 @@
             this.dgvSiparisDetaylari.Size = new System.Drawing.Size(441, 362);
             this.dgvSiparisDetaylari.TabIndex = 5;
             this.dgvSiparisDetaylari.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvSiparisDetaylari_MouseClick);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "UrunAd";
+            this.Column1.HeaderText = "Ürün Adı";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Adet";
+            this.Column2.HeaderText = "Adet";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "BirimFiyat";
+            this.Column3.HeaderText = "Birim Fiyatı";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // cmsSiparisDetay
+            // 
+            this.cmsSiparisDetay.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSiparisDetaySil});
+            this.cmsSiparisDetay.Name = "cmsSiparisDetay";
+            this.cmsSiparisDetay.Size = new System.Drawing.Size(87, 26);
+            // 
+            // tsmiSiparisDetaySil
+            // 
+            this.tsmiSiparisDetaySil.Name = "tsmiSiparisDetaySil";
+            this.tsmiSiparisDetaySil.Size = new System.Drawing.Size(86, 22);
+            this.tsmiSiparisDetaySil.Text = "Sil";
+            this.tsmiSiparisDetaySil.Click += new System.EventHandler(this.tsmiSiparisDetaySil_Click);
             // 
             // cboMasaNo
             // 
@@ -224,20 +266,6 @@
             this.lblMasaNo.Text = "00";
             this.lblMasaNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cmsSiparisDetay
-            // 
-            this.cmsSiparisDetay.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiSiparisDetaySil});
-            this.cmsSiparisDetay.Name = "cmsSiparisDetay";
-            this.cmsSiparisDetay.Size = new System.Drawing.Size(87, 26);
-            // 
-            // tsmiSiparisDetaySil
-            // 
-            this.tsmiSiparisDetaySil.Name = "tsmiSiparisDetaySil";
-            this.tsmiSiparisDetaySil.Size = new System.Drawing.Size(180, 22);
-            this.tsmiSiparisDetaySil.Text = "Sil";
-            this.tsmiSiparisDetaySil.Click += new System.EventHandler(this.tsmiSiparisDetaySil_Click);
-            // 
             // Masa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -290,5 +318,8 @@
         private System.Windows.Forms.Label lblMasaNo;
         private System.Windows.Forms.ContextMenuStrip cmsSiparisDetay;
         private System.Windows.Forms.ToolStripMenuItem tsmiSiparisDetaySil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }
